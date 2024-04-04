@@ -1,0 +1,53 @@
+.BottomNav {
+  background-color: black;
+  height: 60px;
+  position: fixed;
+  width: 100%;
+  z-index: 555; 
+  transition: all 2s ease-in-out;
+}
+.BottomNav .link {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 10%;
+}
+.BottomNav .Links {
+  margin: 5px 20px;
+  text-transform: uppercase;
+  font-size: 15px;
+  color: whitesmoke;
+  cursor: pointer;
+  display: flex;
+  position: relative;
+}
+.Links::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 0;
+  background-color: whitesmoke;
+  transition: width 0.3s ease-in-out;
+}
+.Links:hover:after {
+  width: 80%;
+  left: 0;
+}
+
+.notification {
+  transform: translateX(15px);
+}
+.Noti {
+  width: 40px;
+  height: 20px;
+  color: whitesmoke;
+  position: relative;
+  bottom: 15px;
+}
+.Noti p {
+  padding: 0px 3px;
+  font-size: 13px;
+  font-size: 800;
+}

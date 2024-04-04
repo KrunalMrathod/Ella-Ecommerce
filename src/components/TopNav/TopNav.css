@@ -1,0 +1,43 @@
+.TopNav {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  
+}
+.NavLeft {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.LogoDiv {
+  height: 50px;
+  width: 50%;
+  transform: translateX(-100px);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.LogoDiv img {
+  width: 40%;
+  height: 80%;
+  object-fit: contain;
+}
+.NavRight {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.TopLinks {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+.TopLinks div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 5px;
+}
