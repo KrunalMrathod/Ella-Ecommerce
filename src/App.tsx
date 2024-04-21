@@ -6,16 +6,19 @@ import TopNav from "./components/TopNav/TopNav";
 
 const App: React.FC = () => {
   const [prevScrollPos, setPrevScrollPos] = useState<number>(0);
-  const [visible, setVisible] = useState<boolean>(true);
+  const [sticky, setSticky] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos: number = window.scrollY;
-      if (currentScrollPos > prevScrollPos) {
-        setVisible(false);
+      const isScrollingDown: boolean = currentScrollPos > prevScrollPos;
+
+      if (isScrollingDown && currentScrollPos > 300) {
+        setSticky(true);
       } else {
-        setVisible(true);
+        setSticky(false);
       }
+
       setPrevScrollPos(currentScrollPos);
     };
 
@@ -27,7 +30,9 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <TopNav />
-      {visible && <BottomNav />}
+      <div className={`BottomNav ${sticky ? "sticky" : ""}`}>
+        <BottomNav />
+      </div>
       <Body />
     </div>
   );

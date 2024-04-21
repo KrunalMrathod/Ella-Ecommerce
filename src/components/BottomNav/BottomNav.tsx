@@ -1,4 +1,3 @@
-
 import "./BottomNav.css";
 
 const BottomNav = () => {
