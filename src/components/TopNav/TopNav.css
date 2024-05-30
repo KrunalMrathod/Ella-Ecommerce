@@ -44,6 +44,7 @@
 @media screen and (max-width: 480px) {
   .TopNav {
     padding: 0px;
+    /* border: 1px solid red; */
   }
   .MobileDiv {
     width: 100%;

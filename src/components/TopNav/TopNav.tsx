@@ -4,11 +4,10 @@ import { SlBag } from "react-icons/sl";
 import { CiHeart } from "react-icons/ci";
 import { FaBars } from "react-icons/fa";
 import { IoIosSearch } from "react-icons/io";
-import { FaRegUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 
 const TopNav = () => {
   const [mobileView, setMobileView] = useState<boolean>(false);
-
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 480) {
@@ -37,7 +36,7 @@ const TopNav = () => {
               alt="Ella"
             />
           </div>
-          <FaRegUser/>
+          <FaUser/>
           <SlBag/>
         </div>
       ) : (

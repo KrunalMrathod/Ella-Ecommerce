@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.TopHead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.TopHead span {
+  font-size: 23px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.vr {
+  background-color: black;
+  height: 2px;
+  width: 30%;
+  margin: 0px 30px;
+}
+.ViewAll {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0px;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.Container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px 50px;
+  padding: 20px 0px;
+}
+.ProductBox {
+  width: 20%;
+  font-family: "Poppins", sans-serif;
+}
+.ImgDiv {
+  width: 100%;
+  height: 75%;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+.ImgDiv img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+.HoverButton {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  display: none;
+
+}
+.HoverButton button {
+  width: 100%;
+  padding: 5px;
+  font-size: 18px;
+  text-transform: uppercase;
+  background-color: whitesmoke;
+  cursor: pointer;
+  border: 1px solid lightgray;
+}
+.HoverButton button:hover {
+  background-color: black;
+  color: whitesmoke;
+}
+.SIdeIcons {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  height: 0%;
+  width: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+}
+.SIdeIcons div {
+  background-color: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 20px;
+  margin: 10px 0px;
+  padding: 5px 5px;
+  border-radius: 10px 10px 10px 10px;
+  cursor: pointer;
+}
+.SIdeIcons div span {
+  width: 100%;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 0px 2px;
+}
+.SIdeIcons svg {
+  font-size: 25px;
+  margin: 10px 0px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInSide {
+  from {
+    transform: translateX(20%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.ImgDiv img.hovered {
+    transform: scale(1.02);
+    opacity: 0.9; 
+  }
+
+.ImgDiv .HoverButton,
+.ImgDiv .SIdeIcons {
+  animation: fadeIn 0.7s forwards;
+}
+
+.ImgDiv .HoverButton {
+  animation-name: slideIn;
+}
+
+.ImgDiv .SIdeIcons {
+  animation-name: slideInSide;
+}
+
+.ImgDiv:hover .HoverButton,
+.ImgDiv:hover .SIdeIcons {
+  display: flex;
+}
+
+.DetailsDiv {
+  height: 25%;
+}
+
+.Brand {
+  font-size: 18px;
+  text-align: center;
+  opacity: 0.8;
+  color: gray;
+  margin: 5px;
+}
+.title {
+  font-size: 12px;
+  text-align: center;
+  margin: 5px;
+}
+.price {
+  margin: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+}
+.bottomImg {
+    margin: 10px 0px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.bottomImg .HoverRoundImg {
+  cursor: pointer;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  margin: 0px 10px;
+}
+.bottomImg .HoverRoundImg img {
+  object-fit: cover;
+  width: 100%;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .TopHead {
+        margin: 10px 0px;
+      }
+      .TopHead span {
+        font-size: 15px;
+      }
+      .vr {
+        width: 20%;
+        margin: 0px 15px;
+      }
+      .Container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap ;
+        justify-content: center;
+        align-items: center;
+        gap: 10px 0px;
+        padding: 20px 0px;
+      }
+      .ProductBox {
+        width: 80%;
+      }
+
+
+}

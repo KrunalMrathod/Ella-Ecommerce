@@ -2,6 +2,7 @@
 .Body {
   margin: 0px 0px;
   padding: 0;
+  /* border: 1px solid red; */
 }
 .FirstBanner {
   width: 100%;
@@ -139,6 +140,7 @@
 @media (max-width: 480px) {
  
   .TopBoxContainer {
+    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -147,8 +149,10 @@
   
   .TopThree {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-    width: 350px;
-    height: 200px;
+    /* width: 350px;
+    height: 200px; */
+    width: 100%;
+    height: 100%;
     position: relative;
     margin: 10px 25px;
     cursor: pointer;
@@ -158,7 +162,6 @@
   
   .TopThree:hover img {
     transform: scale(1.10);
-  
     transform-origin: center;
   }
   .TopThree img {

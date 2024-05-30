@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Body.css";
+import NewArrivals from "../NewArrivals/NewArrivals.tsx"
 
 const Body = () => {
   const [mobileBanner, setMobileBanner] = useState(false);
@@ -7,34 +8,33 @@ const Body = () => {
   const [bannerScale, setBannerScale] = useState(1);
   const [scrollPos, setScrollPos] = useState(0);
 
-
   useEffect(() => {
-
-    if (window.innerWidth <= 480) {
-      setMobileBanner(true);
-    } else {
-      setMobileBanner(false);
-    }
+   
+    const handleResize = () => {
+      const isMobile = window.innerWidth <= 480;
+      setMobileBanner(isMobile);
+    };
 
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
-      if (currentScrollPos > 0 && currentScrollPos > scrollPos) {
-        setScrollDirection("down");
-      } else {
-        setScrollDirection("up");
+      if (currentScrollPos < 0.8 * window.innerHeight) {
+        setScrollDirection(currentScrollPos > scrollPos ? "down" : "up");
+        setScrollPos(currentScrollPos);
       }
-      setScrollPos(currentScrollPos);
     };
 
+    window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [scrollPos,mobileBanner]);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollPos]);
 
   useEffect(() => {
     setBannerScale(scrollDirection === "down" ? 1.1 : 1);
-    setBannerScale(scrollDirection === "up" ? 1 : 1.1);
   }, [scrollDirection]);
-
   return (
     <div className="Body">
       <div className="FirstBanner" style={{ overflow: "hidden" }}>
@@ -99,6 +99,8 @@ const Body = () => {
           <span>Accessories</span>
         </div>
       </div>
+
+      <NewArrivals />
     </div>
   );
 };
