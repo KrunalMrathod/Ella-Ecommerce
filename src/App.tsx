@@ -3,15 +3,14 @@ import "./App.css";
 import Body from "./components/Body/Body";
 import BottomNav from "./components/BottomNav/BottomNav";
 import TopNav from "./components/TopNav/TopNav";
-import { NewArrivals } from  "./db/Database";
+import { NewArrivals } from "./db/Database";
 
 const App: React.FC = () => {
   const [prevScrollPos, setPrevScrollPos] = useState<number>(0);
   const [sticky, setSticky] = useState<boolean>(false);
 
   useEffect(() => {
-
-    localStorage.setItem("NewArrivals",JSON.stringify(NewArrivals))
+    localStorage.setItem("NewArrivals", JSON.stringify(NewArrivals));
 
     const handleScroll = () => {
       const currentScrollPos: number = window.scrollY;
@@ -26,17 +25,22 @@ const App: React.FC = () => {
       setPrevScrollPos(currentScrollPos);
     };
 
+ 
+
     window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos,sticky]);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    
+    };
+  }, [prevScrollPos, sticky]);
 
   return (
     <div className="App">
       <TopNav />
-      <div className={`BottomNav ${sticky ? "sticky" : ""}`}>
-        <BottomNav />
-      </div>
+        <div className={`BottomNav ${sticky ? "sticky" : ""}`}>
+          <BottomNav />
+        </div>
       <Body />
     </div>
   );

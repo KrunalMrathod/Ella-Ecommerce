@@ -95,6 +95,53 @@
     transition: none;
   }
 }
+
+@media screen and (min-width: 768px) {
+  .BannerText {
+    top: 15%;
+    left: 0%;
+    width: 60%;
+  }
+  .BodyHead {
+    font-size: 30px;
+  }
+  .hr {
+    width: 20%;
+  }
+  .bodyDesc {
+    font-size: 13px;
+  }
+  .bodyButton {
+    width: 40%;
+  }
+  .bodyButton button {
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .BannerText {
+    top: 15%;
+    left: 0%;
+    width: 60%;
+  }
+  .BodyHead {
+    font-size: 30px;
+  }
+  .hr {
+    width: 20%;
+  }
+  .bodyDesc {
+    font-size: 13px;
+  }
+  .bodyButton {
+    width: 40%;
+  }
+  .bodyButton button {
+    padding: 10px;
+  }
+}
+
 .TopBoxContainer {
   display: flex;
   justify-content: center;
