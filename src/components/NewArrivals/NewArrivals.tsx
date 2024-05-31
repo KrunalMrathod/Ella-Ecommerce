@@ -4,6 +4,7 @@ import { CiHeart } from "react-icons/ci";
 import { IoEyeOutline } from "react-icons/io5";
 
 interface OptionalImg {
+  textHover: string;
   id: string;
   img: string;
 }
@@ -29,7 +30,7 @@ interface NewArrival {
 const NewArrivals: React.FC = () => {
   const [newArrivalsData, setNewArrivalsData] = useState<NewArrival[]>([]);
   const [hoveredImage, setHoveredImage] = useState<{ [key: string]: string }>({});
-  const [hovered, setHovered] = useState<{ [key: string]: boolean }>({});
+  const [hoverText, setHoverText] = useState<{ [key: string]: string }>({});
 
   useEffect(() => {
     const storedNewArrivalsString = localStorage.getItem("NewArrivals");
@@ -43,12 +44,14 @@ const NewArrivals: React.FC = () => {
 
   const handleMouseEnter = (id: string, hoverImg: string) => {
     setHoveredImage(prevState => ({ ...prevState, [id]: hoverImg }));
-    setHovered(prevState => ({ ...prevState, [id]: true }));
   };
 
   const handleMouseLeave = (id: string, mainImg: string) => {
     setHoveredImage(prevState => ({ ...prevState, [id]: mainImg }));
-    setHovered(prevState => ({ ...prevState, [id]: false }));
+  };
+
+  const handleHoverTextChange = (id: string, text: string) => {
+    setHoverText(prevState => ({ ...prevState, [id]: text }));
   };
 
   return (
@@ -76,7 +79,6 @@ const NewArrivals: React.FC = () => {
                 <img 
                   src={hoveredImage[item.id] || item.mainImg} 
                   alt={item.title}
-                  className={hovered[item.id] ? 'hovered' : ''}
                 />
                 <div className="HoverButton">
                   <button>quick add</button>
@@ -97,18 +99,27 @@ const NewArrivals: React.FC = () => {
                   <span>{item.vendor}</span>
                 </div>
                 <div className="title">
-                  <span>{item.title}</span>
+                  <span>{item.title} {hoverText[item.id]}</span>
                 </div>
                 <div className="price">
                   <span>{`from $${item.price}`}</span>
                 </div>
-                <div className="bottomImg">
-                  {item.optionalImgs.map((mapIng) => (
-                    <div className="HoverRoundImg" key={mapIng.id}>
-                      <img src={mapIng.img} alt="" />
+                {
+                  item.optionalImgs &&  (
+                    <div className="bottomImg">
+                      {item.optionalImgs.map((mapIng) => (
+                        <div 
+                          className="HoverRoundImg" 
+                          onClick={() => handleHoverTextChange(item.id, mapIng.textHover)} 
+                          key={mapIng.id}
+                        >
+                          {mapIng.textHover && (<span>{mapIng.textHover}</span>)}
+                          <img src={mapIng.img} alt="" />
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  )
+                }
               </div>
             </div>
           ))

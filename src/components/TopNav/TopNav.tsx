@@ -10,7 +10,7 @@ const TopNav = () => {
   const [mobileView, setMobileView] = useState<boolean>(false);
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 480) {
+      if (window.innerWidth <= 1024) {
         setMobileView(true);
       } else {
         setMobileView(false);

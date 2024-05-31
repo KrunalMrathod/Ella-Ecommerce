@@ -44,7 +44,6 @@
 @media screen and (max-width: 480px) {
   .TopNav {
     padding: 0px;
-    /* border: 1px solid red; */
   }
   .MobileDiv {
     width: 100%;
@@ -64,7 +63,60 @@
   }
   .MobileDiv svg{
     font-size: 25px;
-    font-weight: 600;
     margin: 0px 5px;
+  }
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .TopNav {
+    padding: 5px;
+  }
+  .MobileDiv {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .MobileLogo {
+    width: 50%;
+    height: 30px;
+  }
+  .MobileLogo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .MobileDiv svg{
+    font-size: 25px;
+    margin: 0px 0px;
+  }
+    
+}
+
+
+@media screen and (min-width: 769px) {
+  .TopNav {
+    padding: 5px;
+  }
+  .MobileDiv {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .MobileLogo {
+    width: 50%;
+    height: 30px;
+  }
+  .MobileLogo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .MobileDiv svg{
+    font-size: 25px;
+    margin: 0px 0px;
   }
 }
