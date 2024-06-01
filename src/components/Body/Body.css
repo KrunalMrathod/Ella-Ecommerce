@@ -2,7 +2,6 @@
 .Body {
   margin: 0px 0px;
   padding: 0;
-  /* border: 1px solid red; */
 }
 .FirstBanner {
   width: 100%;
@@ -213,10 +212,6 @@
  
   
   .TopThree span {
-    /* position: absolute;
-    z-index: 5;
-    color: whitesmoke;
-    font-weight: 600; */
     font-size: 20px;
     top: 40%;
     left: 30%;

@@ -203,7 +203,7 @@
   justify-content: center;
   margin: auto;
 }
-.HoverRoundImg span{
+.HoverRoundImg span {
   position: absolute;
   bottom: 33px;
   border: 1px solid black;
@@ -224,9 +224,9 @@
   display: block;
 }
 
-
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 480px) {
   .TopHead {
+    border: 1px solid rebeccapurpled;
     margin: 10px 0px;
   }
   .TopHead span {
@@ -247,5 +247,26 @@
   }
   .ProductBox {
     width: 80%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .NewArrivalContainer {
+    margin: 30px 0px;
+  }
+  .Container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px 30px;
+    padding: 20px 10px;
+  }
+
+  .ProductBox {
+    width: 30%;
+  }
+  .ProductBox:last-child {
+    transform: translateY(20px);
   }
 }

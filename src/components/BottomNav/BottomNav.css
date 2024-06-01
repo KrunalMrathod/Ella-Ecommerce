@@ -66,11 +66,3 @@
   font-size: 13px;
   font-size: 800;
 }
-
-@media (max-width: 768px) {
-
-.BottomNav{
-  display: none;
-}
-
-}

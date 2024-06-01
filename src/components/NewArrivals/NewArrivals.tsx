@@ -118,7 +118,7 @@ const NewArrivals: React.FC = () => {
                         </div>
                       ))}
                     </div>
-                  )
+                  ) 
                 }
               </div>
             </div>
