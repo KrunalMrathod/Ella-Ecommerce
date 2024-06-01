@@ -199,4 +199,26 @@
   .bodyButton{
     width: 30%;
   }
+  .TopBoxContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .TopThree {
+    width: 30%;
+    height: 60% ;
+    margin: 10px 0px;
+  }
+ 
+  
+  .TopThree span {
+    /* position: absolute;
+    z-index: 5;
+    color: whitesmoke;
+    font-weight: 600; */
+    font-size: 20px;
+    top: 40%;
+    left: 30%;
+  }
 }
