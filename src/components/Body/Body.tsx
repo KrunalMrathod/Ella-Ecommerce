@@ -101,6 +101,45 @@ const Body = () => {
       </div>
 
       <NewArrivals />
+
+      <div className="SecondBanner" style={{ overflow: "hidden" }}>
+        <div
+          style={{
+            transform: `scale(${bannerScale})`,
+            transition: `transform 2s ease-in-out`,
+          }}
+        >
+          {mobileBanner ? (
+            <img
+              src="https://new-ella-demo.myshopify.com/cdn/shop/files/banner-1-mb-min.jpg?v=1632459215&width=550"
+              alt=""
+              style={{ width: "100%" }}
+            />
+          ) : (
+            <img
+              src="https://new-ella-demo.myshopify.com/cdn/shop/files/banner-1-compressor.jpg?v=1632456769&width=2000"
+              alt=""
+              style={{ width: "100%" }}
+            />
+          )}
+        </div>
+
+        <div className="BannerText">
+          <div className="BodyHead">
+            <span>METROPÓLIS</span>
+          </div>
+          <div className="hr"></div>
+          <div className="bodyDesc">
+            <span>
+            Quisquemos sodales suscipit tortor ditaemcos condimentum de cosmo lacus meleifend menean diverra loremous.
+            </span>
+          </div>
+          <div className="bodyButton">
+            <button>SHOP NOW</button>
+          </div>
+        </div>
+      </div>
+      
     </div>
   );
 };
