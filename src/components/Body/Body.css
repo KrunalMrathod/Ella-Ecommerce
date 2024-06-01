@@ -32,7 +32,7 @@
   left: 10%;
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 40%;
   padding: 10px 0px;
   animation: fadeAnimation ease 3s;
   animation-iteration-count: 1;
@@ -76,7 +76,50 @@
   transition: all ease-in-out 1s;
 }
 
-@media (max-width: 480px) {
+.TopBoxContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.TopThree {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  width: 350px;
+  height: 200px;
+  position: relative;
+  margin: 10px 25px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.TopThree:hover img {
+  transform: scale(1.1);
+
+  transform-origin: center;
+}
+.TopThree img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease-in-out;
+}
+
+.TopThree span {
+  position: absolute;
+  z-index: 5;
+  color: whitesmoke;
+  font-weight: 600;
+  font-size: 25px;
+  top: 50%;
+  left: 40%;
+}
+
+.TopThree span:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 480px) {
   .BannerText {
     top: 25%;
     left: 0%;
@@ -94,130 +137,35 @@
   .bodyButton button:hover {
     transition: none;
   }
-}
-
-@media screen and (min-width: 768px) {
-  .BannerText {
-    top: 15%;
-    left: 0%;
-    width: 60%;
-  }
-  .BodyHead {
-    font-size: 30px;
-  }
-  .hr {
-    width: 20%;
-  }
-  .bodyDesc {
-    font-size: 13px;
-  }
-  .bodyButton {
-    width: 40%;
-  }
-  .bodyButton button {
-    padding: 10px;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .BannerText {
-    top: 15%;
-    left: 0%;
-    width: 60%;
-  }
-  .BodyHead {
-    font-size: 30px;
-  }
-  .hr {
-    width: 20%;
-  }
-  .bodyDesc {
-    font-size: 13px;
-  }
-  .bodyButton {
-    width: 40%;
-  }
-  .bodyButton button {
-    padding: 10px;
-  }
-}
-
-.TopBoxContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.TopThree {
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-  width: 350px;
-  height: 200px;
-  position: relative;
-  margin: 10px 25px;
-  cursor: pointer;
-  overflow: hidden;
-  
-}
-
-.TopThree:hover img {
-  transform: scale(1.10);
-
-  transform-origin: center;
-}
-.TopThree img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .6s ease-in-out;
-}
-
-.TopThree span {
-  position: absolute;
-  z-index: 5;
-  color: whitesmoke;
-  font-weight: 600;
-  font-size: 25px;
-  top: 50%;
-  left: 40%;
-}
-
-.TopThree span:hover {
-  text-decoration: underline;
-}
-@media (max-width: 480px) {
- 
   .TopBoxContainer {
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  
+
   .TopThree {
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-    /* width: 350px;
-    height: 200px; */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+      rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     width: 100%;
     height: 100%;
     position: relative;
     margin: 10px 25px;
     cursor: pointer;
     overflow: hidden;
-    
   }
-  
+
   .TopThree:hover img {
-    transform: scale(1.10);
+    transform: scale(1.1);
     transform-origin: center;
   }
   .TopThree img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform .6s ease-in-out;
+    transition: transform 0.6s ease-in-out;
   }
-  
+
   .TopThree span {
     position: absolute;
     z-index: 5;
@@ -227,9 +175,28 @@
     top: 50%;
     left: 40%;
   }
-  
+
   .TopThree span:hover {
     text-decoration: none;
   }
+}
 
+@media (min-width: 768px) and (max-width: 1024px) {
+  .BannerText {
+    top: 15%;
+    width: 60%;
+    left: 0%;
+  }
+  .BodyHead {
+    font-size: 23px;
+  }
+  .hr {
+    width: 50%;
+  }
+  .bodyDesc {
+    font-size: 13px;
+  }
+  .bodyButton{
+    width: 30%;
+  }
 }

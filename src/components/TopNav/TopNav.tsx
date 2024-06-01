@@ -10,7 +10,7 @@ const TopNav = () => {
   const [mobileView, setMobileView] = useState<boolean>(false);
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 1024) {
+      if (window.innerWidth <= 1026) {
         setMobileView(true);
       } else {
         setMobileView(false);
@@ -22,7 +22,9 @@ const TopNav = () => {
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [mobileView]);
+
+ 
 
   return (
     <div className="TopNav">
