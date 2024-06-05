@@ -4,6 +4,7 @@ import Body from "./components/Body/Body";
 import BottomNav from "./components/BottomNav/BottomNav";
 import TopNav from "./components/TopNav/TopNav";
 import { NewArrivals } from "./db/Database";
+import { TrendingNow } from "./db/Database";
 
 const App: React.FC = () => {
   const [prevScrollPos, setPrevScrollPos] = useState<number>(0);
@@ -11,6 +12,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     localStorage.setItem("NewArrivals", JSON.stringify(NewArrivals));
+    localStorage.setItem("TrendingNow", JSON.stringify(TrendingNow));
 
     const handleScroll = () => {
       const currentScrollPos: number = window.scrollY;

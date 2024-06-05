@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Body.css";
 import NewArrivals from "../NewArrivals/NewArrivals.tsx"
+import TrendingNow from "../TrendingNow/TrendingNow.tsx";
 
 const Body = () => {
   const [mobileBanner, setMobileBanner] = useState(false);
@@ -11,7 +12,7 @@ const Body = () => {
   useEffect(() => {
    
     const handleResize = () => {
-      const isMobile = window.innerWidth <= 480;
+      const isMobile = window.innerWidth <= 460;
       setMobileBanner(isMobile);
     };
 
@@ -35,6 +36,8 @@ const Body = () => {
   useEffect(() => {
     setBannerScale(scrollDirection === "down" ? 1.1 : 1);
   }, [scrollDirection]);
+
+  console.log(mobileBanner)
   return (
     <div className="Body">
       <div className="FirstBanner" style={{ overflow: "hidden" }}>
@@ -139,7 +142,7 @@ const Body = () => {
           </div>
         </div>
       </div>
-      
+      <TrendingNow/>
     </div>
   );
 };

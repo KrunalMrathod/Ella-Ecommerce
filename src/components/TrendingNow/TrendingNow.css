@@ -1,0 +1,116 @@
+.TrendingNow {
+  margin: 50px 0px;
+  height: 90vh;
+  position: relative;
+}
+
+.TrendingNow .Container {
+  width: 90%;
+  height: 80%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  scroll-behavior: smooth;
+}
+
+.TrendingNow .Container::-webkit-scrollbar {
+  display: none;
+}
+.TrendingNow .Container .ProductBox {
+  padding: 0px 10px;
+  margin: 0px 5px;
+}
+
+.TrendingNow .ViewAll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.TrendingNow .ViewAll button:nth-child(1) {
+  position: absolute;
+  left: 10px;
+  top: 40%;
+  z-index: 5;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+.TrendingNow .ViewAll button:nth-child(3) {
+  position: absolute;
+  right: 10px;
+  top: 40%;
+  z-index: 5;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.TrendingNow .ViewAll button svg {
+  font-size: 20px;
+  fill: rgb(75, 74, 74);
+}
+
+@media only screen and (max-width: 480px) {
+  .TrendingNow {
+    margin: 50px 0px;
+    width: 100%;
+    height: inherit;
+  }
+  .ViewAll button {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .TrendingNow .Container {
+    width: 90%;
+    height: 80%;
+    margin: 30px auto;
+    padding: 10px;
+  }
+
+  .TrendingNow .ProductBox {
+    margin: 0px;
+    height: 100%;
+    padding: 0px !important;
+  }
+  .TrendingNow .ProductBox:last-child {
+    transform: translateY(0px);
+}
+  .TrendingNow .ImgDiv {
+    width: 100%;
+    height: 70%;
+  }
+  .TrendingNow .DetailsDiv {
+    height: 30%;
+    margin: 0 !important;
+    padding: 0px;
+  }
+  .TrendingNow .DetailsDiv .title {
+    font-size: 10px;
+  }
+  .TrendingNow .DetailsDiv .price {
+    font-size: 13px;
+  }
+  .TrendingNow .DetailsDiv .bottomImg {
+    margin: 0px auto;
+  }
+  .TrendingNow .DetailsDiv .bottomImg img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .ViewAll button {
+    display: none;
+  }
+}
