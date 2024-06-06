@@ -1,0 +1,228 @@
+.FooterMain {
+  display: flex;
+  background-color: #232323;
+  color: whitesmoke;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.FooterLeft {
+  width: 60%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.FooterColums {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 50px;
+  position: relative;
+  text-transform: capitalize;
+}
+.FooterColums h3 {
+  font-weight: 600;
+  font-size: 25px;
+  margin: 5px 0px;
+}
+.FooterColums p {
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 5px 0px;
+  cursor: pointer;
+}
+.CopiRight {
+  text-align: center;
+  width: 100%;
+  transform: translatex(80%);
+  font-size: 15px;
+}
+.FooterRight {
+  text-transform: capitalize;
+  width: 40%;
+}
+
+.RightInput {
+  width: 80%;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.RightInput span {
+  font-size: 25px;
+  font-weight: 600;
+  margin: 10px;
+}
+.RightInput p {
+  font-size: 18px;
+  margin: 10px;
+}
+.RightInputButton {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+.RightInputButton input {
+  width: 70%;
+  margin: 0px 5px;
+  background-color: transparent;
+  border: 1px solid whitesmoke;
+  color: whitesmoke;
+  border-radius: 3px;
+}
+.RightInputButton input::placeholder {
+  color: whitesmoke;
+  transform: translateX(10px);
+}
+.RightInputButton button {
+  border-radius: 3px;
+  width: 30%;
+  margin: 0px 5px;
+  background-color: white;
+  color: #232323;
+  font-weight: 600;
+  padding: 10px;
+  cursor: pointer;
+}
+.RightSocialIcons {
+  display: flex;
+  width: 50%;
+  margin: 50px 60px;
+}
+.FooterIcons {
+  height: 30px;
+  width: 50px;
+  margin: 0px 10px;
+}
+
+.FooterIcons svg {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  .DropLists {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    width: 100%;
+  }
+
+  .Lists {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    text-transform: uppercase;
+  }
+
+  .HiddenList {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+    background-color: #232323;
+    color: whitesmoke;
+    padding: 0 20px;
+    z-index: 1;
+  }
+
+  .HiddenList p {
+    margin: 5px 0;
+  }
+
+  .Lists.expanded .HiddenList {
+    max-height: 300px;
+    opacity: 1;
+    padding: 10px 20px;
+  }
+
+  .Lists.expanded + .Lists {
+    margin-top: 180px;
+  }
+
+  .RightInput {
+    width: 100%;
+  }
+  .RightInput input::placeholder {
+    font-size: 10px;
+  }
+  .RightSocialIcons {
+    width: 100%;
+    margin: 20px 0px;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .DropLists {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    width: 100%;
+  }
+
+  .Lists {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    text-transform: uppercase;
+  }
+
+  .HiddenList {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+    background-color: #232323;
+    color: whitesmoke;
+    padding: 0 20px;
+    z-index: 1;
+  }
+
+  .HiddenList p {
+    margin: 5px 0;
+  }
+
+  .Lists.expanded .HiddenList {
+    max-height: 300px;
+    opacity: 1;
+    padding: 10px 20px;
+  }
+
+  .Lists.expanded + .Lists {
+    margin-top: 180px;
+  }
+
+  .RightInput {
+    width: 100%;
+  }
+  .RightInput input::placeholder {
+    font-size: 10px;
+  }
+  .RightSocialIcons {
+    width: 100%;
+    margin: 20px 0px;
+  }
+
+}

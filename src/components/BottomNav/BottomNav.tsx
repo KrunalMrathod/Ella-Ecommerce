@@ -6,7 +6,7 @@ const BottomNav = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 1026) {
+      if (window.innerWidth < 1026) {
         setShowNavbar(false);
       } else {
         setShowNavbar(true);
@@ -18,7 +18,6 @@ const BottomNav = () => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, [showNavbar]);
-
  
 
   return (

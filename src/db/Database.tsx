@@ -532,3 +532,27 @@ export const TrendingNow = [
 
 ]
 
+export const FeaturedOnElla = [
+    {
+        id: uuidv4(),
+        img : "https://new-ella-demo.myshopify.com/cdn/shop/files/1_157354b3-717d-4e2f-be6e-b5b4f8e44467_370x.jpg?v=1629950570",
+        tegONImage : "DORUS",
+        title : "LOREM DE DORUS",
+        description  : 'Nullam aliquet vestibulum augue non varius. Cras cosmo congue an melitos. Dui del ante le maliquam. Praesent murna de tellus laoreet cosmopolis.',
+
+    },
+    {
+        id: uuidv4(),
+        img : "https://new-ella-demo.myshopify.com/cdn/shop/files/2_669a1171-f379-4a53-9a12-a7eef46e4c94_370x.jpg?v=1629950593",
+        tegONImage : "LANOS",
+        title : "LOREM DE DORUS",
+        description  : 'Nullam aliquet vestibulum augue non varius. Cras cosmo congue an melitos. Dui del ante le maliquam. Praesent murna de tellus laoreet cosmopolis.',
+    },
+    {
+        id: uuidv4(),
+        img : "https://new-ella-demo.myshopify.com/cdn/shop/files/3_447d8bf4-3bd6-4a7f-9059-e12913f48a5c_370x.jpg?v=1629950605",
+        tegONImage : "SOLADES",
+        title : "LOREM DE DORUS",
+        description  : 'Nullam aliquet vestibulum augue non varius. Cras cosmo congue an melitos. Dui del ante le maliquam. Praesent murna de tellus laoreet cosmopolis.',
+    },
+]

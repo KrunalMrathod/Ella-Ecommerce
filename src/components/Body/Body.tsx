@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./Body.css";
 import NewArrivals from "../NewArrivals/NewArrivals.tsx"
 import TrendingNow from "../TrendingNow/TrendingNow.tsx";
+import FeaturedIn from "../FeaturedIn/FeaturedIn.tsx";
 
 const Body = () => {
   const [mobileBanner, setMobileBanner] = useState(false);
@@ -37,7 +38,7 @@ const Body = () => {
     setBannerScale(scrollDirection === "down" ? 1.1 : 1);
   }, [scrollDirection]);
 
-  console.log(mobileBanner)
+ 
   return (
     <div className="Body">
       <div className="FirstBanner" style={{ overflow: "hidden" }}>
@@ -143,6 +144,7 @@ const Body = () => {
         </div>
       </div>
       <TrendingNow/>
+      <FeaturedIn/>
     </div>
   );
 };

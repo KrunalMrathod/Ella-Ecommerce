@@ -1,0 +1,114 @@
+
+.FeaturedInHead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.FeaturedInHead span {
+  font-size: 25px;
+  font-weight: 600;
+}
+.FeaturedInContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 15px;
+}
+.FeaturedInContainer .ProductBox {
+  margin: 10px 20px;
+}
+
+.FeaturedInContainer .ProductBox:last-child {
+  transform: translateY(0px);
+}
+.FeaturedInContainer .ProductBox .MainImgBox {
+  width: 100%;
+  height: 80%;
+  object-fit: contain;
+  overflow: hidden;
+  cursor: pointer;
+}
+.FeaturedInContainer .MainImgBox img {
+  width: 100%;
+  height: 100% !important;
+
+}
+.FeaturedInContainer .MainImgBox img:hover{
+    transform: scale(1.1);
+    transition: all ease-in-out 0.50s;
+}
+.FeaturedInContainer .ProductBox .DetailsBox {
+  height: 20%;
+  width: 100%;
+  font-weight: 500;
+}
+.Button {
+  padding: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.Button button {
+  height: 100%;
+  width: 50%;
+  background-color: #232323;
+  color: whitesmoke;
+  padding: 10px;
+  cursor: pointer;
+  font-family: sa;
+}
+.Button button:hover{
+    background-color: transparent;
+    color: #232323;
+    transition: all ease-in-out 1s;
+}
+
+
+@media only screen and (max-width: 480px) {
+.FeaturedInMain{
+  width: 100%;
+}
+.FeaturedInHead {
+  margin: 10px 0px;
+  justify-content: space-evenly;
+}
+.FeaturedInHead span {
+  font-size: 15px;
+}
+.FeaturedInHead .vr{
+  width: 15%;
+}
+.FeaturedInContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: scroll;
+  margin: 20px auto;
+}
+.FeaturedInContainer .ProductBox {
+  margin: 10px 0px;
+  height: 80%;
+  width: 90%;
+}
+
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .FeaturedInMain{
+    width: 100%;
+  }
+  .FeaturedInHead {
+    margin: 10px 0px;
+    justify-content: space-evenly;
+  }
+  .FeaturedInHead span {
+    font-size: 18px;
+  }
+  .FeaturedInHead .vr{
+    width: 30%;
+  }
+
+}
