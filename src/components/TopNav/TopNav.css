@@ -9,6 +9,11 @@
   justify-content: center;
   align-items: center;
 }
+.TopNav a {
+  color: black;
+  list-style: none;
+  text-decoration: none;
+}
 .LogoDiv {
   height: 50px;
   width: 50%;
@@ -54,20 +59,17 @@
   .MobileLogo {
     width: 70px;
     height: 50px;
-
   }
   .MobileLogo img {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
-  .MobileDiv svg{
+  .MobileDiv svg {
     font-size: 25px;
     margin: 0px 5px;
   }
 }
-
-
 
 @media screen and (max-width: 768px) {
   .TopNav {
@@ -88,13 +90,11 @@
     height: 100%;
     object-fit: contain;
   }
-  .MobileDiv svg{
+  .MobileDiv svg {
     font-size: 25px;
     margin: 0px 0px;
   }
-    
 }
-
 
 @media screen and (min-width: 769px) {
   .TopNav {
@@ -115,7 +115,7 @@
     height: 100%;
     object-fit: contain;
   }
-  .MobileDiv svg{
+  .MobileDiv svg {
     font-size: 25px;
     margin: 0px 0px;
   }

@@ -5,6 +5,7 @@ import { CiHeart } from "react-icons/ci";
 import { FaBars } from "react-icons/fa";
 import { IoIosSearch } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const TopNav = () => {
   const [mobileView, setMobileView] = useState<boolean>(false);
@@ -24,8 +25,6 @@ const TopNav = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, [mobileView]);
 
- 
-
   return (
     <div className="TopNav">
       {mobileView ? (
@@ -38,18 +37,22 @@ const TopNav = () => {
               alt="Ella"
             />
           </div>
-          <FaUser/>
-          <SlBag/>
+          <FaUser />
+          <SlBag />
         </div>
       ) : (
         <>
           <div className="NavLeft">
-            <div className="LogoDiv">
-              <img
-                src="https://new-ella-demo.myshopify.com/cdn/shop/files/ella-logo-black-compressor.png?v=1629858814&width=300"
-                alt="Ella"
-              />
-            </div>
+            
+              <div className="LogoDiv">
+              <Link to={"/"}>
+                <img
+                  src="https://new-ella-demo.myshopify.com/cdn/shop/files/ella-logo-black-compressor.png?v=1629858814&width=300"
+                  alt="Ella"
+                />
+                  </Link>
+              </div>
+          
           </div>
           <div className="NavRight">
             <div className="TopLinks">
@@ -57,9 +60,12 @@ const TopNav = () => {
                 <div className="cartIcons">
                   <SlBag />
                 </div>
-                <div className="cartText">
-                  <span>Shopping Cart</span>
-                </div>
+                <Link to={"/cart"}>
+                  <div className="cartText">
+                    <span>Shopping Cart</span>
+                  </div>
+                </Link>
+
                 <div className="cartCount">
                   <span>0</span>
                 </div>

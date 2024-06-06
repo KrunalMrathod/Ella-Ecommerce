@@ -16,7 +16,12 @@
   padding: 10px;
   scroll-behavior: smooth;
 }
-
+.TrendingNow a {
+  list-style: none;
+  text-decoration: none;
+  color: unset;
+  display: contents;
+}
 .TrendingNow .Container::-webkit-scrollbar {
   display: none;
 }

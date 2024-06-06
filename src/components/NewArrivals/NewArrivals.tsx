@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./NewArrivals.css";
 import { CiHeart } from "react-icons/ci";
 import { IoEyeOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 interface OptionalImg {
   textHover: string;
@@ -43,15 +44,15 @@ const NewArrivals: React.FC = () => {
   }, []);
 
   const handleMouseEnter = (id: string, hoverImg: string) => {
-    setHoveredImage(prevState => ({ ...prevState, [id]: hoverImg }));
+    setHoveredImage((prevState) => ({ ...prevState, [id]: hoverImg }));
   };
 
   const handleMouseLeave = (id: string, mainImg: string) => {
-    setHoveredImage(prevState => ({ ...prevState, [id]: mainImg }));
+    setHoveredImage((prevState) => ({ ...prevState, [id]: mainImg }));
   };
 
   const handleHoverTextChange = (id: string, text: string) => {
-    setHoverText(prevState => ({ ...prevState, [id]: text }));
+    setHoverText((prevState) => ({ ...prevState, [id]: text }));
   };
 
   return (
@@ -63,65 +64,74 @@ const NewArrivals: React.FC = () => {
         </div>
         <div className="vr"></div>
       </div>
-      <div className="ViewAll">
-        <span>View ALL</span>
-      </div>
+      <Link to={"/allProducts"}>
+        <div className="ViewAll">
+          <span>View ALL</span>
+        </div>
+      </Link>
 
       <div className="Container">
         {newArrivalsData.length > 0 ? (
           newArrivalsData.map((item: NewArrival, index: number) => (
-            <div className="ProductBox" key={index}>
-              <div 
-                className="ImgDiv"
-                onMouseEnter={() => handleMouseEnter(item.id, item.hoverImg)}
-                onMouseLeave={() => handleMouseLeave(item.id, item.mainImg)}
-              >
-                <img 
-                  src={hoveredImage[item.id] || item.mainImg} 
-                  alt={item.title}
-                />
-                <div className="HoverButton">
-                  <button>quick add</button>
-                </div>
-                <div className="SIdeIcons">
-                  <div className="PWishList">
-                    <span>Wish List</span>
-                    <CiHeart />
+            <Link
+            to={`/allProducts/singleProduct/${item.id}`}
+            state={{ product: item }}
+            key={index}
+            className="ProductBoxLink"
+          >
+              <div className="ProductBox">
+                <div
+                  className="ImgDiv"
+                  onMouseEnter={() => handleMouseEnter(item.id, item.hoverImg)}
+                  onMouseLeave={() => handleMouseLeave(item.id, item.mainImg)}
+                >
+                  <img
+                    src={hoveredImage[item.id] || item.mainImg}
+                    alt={item.title}
+                  />
+                  <div className="HoverButton">
+                    <button>quick add</button>
                   </div>
-                  <div className="pQuickAdd">
-                    <span>Quick View</span>
-                    <IoEyeOutline />
+                  <div className="SIdeIcons">
+                    <div className="PWishList">
+                      <span>Wish List</span>
+                      <CiHeart />
+                    </div>
+                    <div className="pQuickAdd">
+                      <span>Quick View</span>
+                      <IoEyeOutline />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="DetailsDiv">
-                <div className="Brand">
-                  <span>{item.vendor}</span>
-                </div>
-                <div className="title">
-                  <span>{item.title} {hoverText[item.id]}</span>
-                </div>
-                <div className="price">
-                  <span>{`from $${item.price}`}</span>
-                </div>
-                {
-                  item.optionalImgs &&  (
+                <div className="DetailsDiv">
+                  <div className="Brand">
+                    <span>{item.vendor}</span>
+                  </div>
+                  <div className="title">
+                    <span>
+                      {item.title} {hoverText[item.id]}
+                    </span>
+                  </div>
+                  <div className="price">
+                    <span>{`from $${item.price}`}</span>
+                  </div>
+                  {item.optionalImgs && (
                     <div className="bottomImg">
                       {item.optionalImgs.map((mapIng) => (
-                        <div 
-                          className="HoverRoundImg" 
-                          onClick={() => handleHoverTextChange(item.id, mapIng.textHover)} 
+                        <div
+                          className="HoverRoundImg"
+                          onClick={() => handleHoverTextChange(item.id, mapIng.textHover)}
                           key={mapIng.id}
                         >
-                          {mapIng.textHover && (<span>{mapIng.textHover}</span>)}
+                          {mapIng.textHover && <span>{mapIng.textHover}</span>}
                           <img src={mapIng.img} alt="" />
                         </div>
                       ))}
                     </div>
-                  ) 
-                }
+                  )}
+                </div>
               </div>
-            </div>
+            </Link>
           ))
         ) : (
           <h1>No new arrivals</h1>

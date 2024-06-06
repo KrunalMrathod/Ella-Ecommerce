@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./TrendingNow.css";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 interface OptionalImg {
   textHover: string;
@@ -26,7 +27,7 @@ interface TrendingNow {
   optionalImgs: OptionalImg[];
 }
 
-const TrendingNow = () => {
+const TrendingNow: React.FC = () => {
   const [TrendingNowData, setTrendingNowData] = useState<TrendingNow[]>([]);
   const [hoveredImage, setHoveredImage] = useState<{ [key: string]: string }>({});
   const [hoverText, setHoverText] = useState<{ [key: string]: string }>({});
@@ -54,12 +55,11 @@ const TrendingNow = () => {
   const handleHoverTextChange = (id: string, text: string) => {
     setHoverText((prevState) => ({ ...prevState, [id]: text }));
   };
+
   const handleScrollImages = (direction: string) => {
     if (containerRef.current) {
       const container = containerRef.current;
       const scrollAmount = container.clientWidth;
-      console.log(scrollAmount)
-      console.log(container.clientWidth)
 
       if (direction === "right") {
         container.scrollLeft += scrollAmount;
@@ -90,58 +90,60 @@ const TrendingNow = () => {
       <div className="Container" ref={containerRef}>
         {TrendingNowData.length > 0 ? (
           TrendingNowData.map((item: TrendingNow, index: number) => (
-            <div className="ProductBox" key={index}>
-              <div
-                className="ImgDiv"
-                onMouseEnter={() => handleMouseEnter(item.id, item.hoverImg)}
-                onMouseLeave={() => handleMouseLeave(item.id, item.mainImg)}
-              >
-                <img
-                  src={hoveredImage[item.id] || item.mainImg}
-                  alt={item.title}
-                />
-                <div className="HoverButton">
-                  <button>quick add</button>
+            <Link to={`/allProducts/singleProduct/${item.id}`} key={index} className="ProductBoxLink"   state={{ product: item }}>
+              <div className="ProductBox">
+                <div
+                  className="ImgDiv"
+                  onMouseEnter={() => handleMouseEnter(item.id, item.hoverImg)}
+                  onMouseLeave={() => handleMouseLeave(item.id, item.mainImg)}
+                >
+                  <img
+                    src={hoveredImage[item.id] || item.mainImg}
+                    alt={item.title}
+                  />
+                  <div className="HoverButton">
+                    <button>quick add</button>
+                  </div>
+                  <div className="SIdeIcons">
+                    <div className="PWishList">
+                      <span>Wish List</span>
+                      {/* <CiHeart /> */}
+                    </div>
+                    <div className="pQuickAdd">
+                      <span>Quick View</span>
+                      {/* <IoEyeOutline /> */}
+                    </div>
+                  </div>
                 </div>
-                <div className="SIdeIcons">
-                  <div className="PWishList">
-                    <span>Wish List</span>
-                    {/* <CiHeart /> */}
+                <div className="DetailsDiv">
+                  <div className="Brand">
+                    <span>{item.vendor}</span>
                   </div>
-                  <div className="pQuickAdd">
-                    <span>Quick View</span>
-                    {/* <IoEyeOutline /> */}
+                  <div className="title">
+                    <span>
+                      {item.title} {hoverText[item.id]}
+                    </span>
                   </div>
+                  <div className="price">
+                    <span>{`from $${item.price}`}</span>
+                  </div>
+                  {item.optionalImgs && (
+                    <div className="bottomImg">
+                      {item.optionalImgs.map((mapIng) => (
+                        <div
+                          className="HoverRoundImg"
+                          onClick={() => handleHoverTextChange(item.id, mapIng.textHover)}
+                          key={mapIng.id}
+                        >
+                          {mapIng.textHover && <span>{mapIng.textHover}</span>}
+                          <img src={mapIng.img} alt="" />
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
-              <div className="DetailsDiv">
-                <div className="Brand">
-                  <span>{item.vendor}</span>
-                </div>
-                <div className="title">
-                  <span>
-                    {item.title} {hoverText[item.id]}
-                  </span>
-                </div>
-                <div className="price">
-                  <span>{`from $${item.price}`}</span>
-                </div>
-                {item.optionalImgs && (
-                  <div className="bottomImg">
-                    {item.optionalImgs.map((mapIng) => (
-                      <div
-                        className="HoverRoundImg"
-                        onClick={() => handleHoverTextChange(item.id, mapIng.textHover)}
-                        key={mapIng.id}
-                      >
-                        {mapIng.textHover && <span>{mapIng.textHover}</span>}
-                        <img src={mapIng.img} alt="" />
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
+            </Link>
           ))
         ) : (
           <h1>No new arrivals</h1>
