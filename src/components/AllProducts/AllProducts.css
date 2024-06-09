@@ -1,0 +1,367 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.AllProducts {
+  display: flex;
+}
+.Filters {
+  width: 20%;
+  font-family: "Poppins", sans-serif;
+}
+.CategoriesDiv {
+  border-bottom: 1px solid gray;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  align-items: center;
+}
+
+.CategoriesList p {
+  font-size: 15px;
+  margin: 5px 15px;
+  font-weight: 300;
+  cursor: pointer;
+}
+.AllCategories .CategoriesList {
+  overflow-y: scroll;
+}
+.AllCategories .CategoriesList::-webkit-scrollbar {
+  display: none;
+}
+.AllCategories .CategoriesList p {
+  position: relative;
+  padding-left: 20px;
+  transition: padding-left 0.3s ease, color 0.3s ease;
+}
+.AllCategories .CategoriesList p::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: black;
+}
+.CategoriesList p:hover {
+  padding-left: 30px;
+}
+
+.AllCategories .CategoriesList p:hover::before {
+  opacity: 1;
+}
+
+.CategoriesList {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.CategoriesList.show {
+  max-height: 200px;
+  transition: max-height 0.5s ease-in;
+}
+
+.PriceContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.PriceContainer .PriceBoxes {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+}
+.PriceBoxes span {
+  font-size: 15px;
+  font-weight: 300;
+}
+.PriceBox {
+  border: 1px solid gray;
+  width: 30%;
+  height: 30px;
+  margin: 0px 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.styled-slider {
+  margin: 10px 0px;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80%;
+  height: 8px;
+  background: #232323;
+  outline: none;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.styled-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  border: 5px solid #232323;
+  padding: 5px;
+  background: white;
+  cursor: pointer;
+  transition: ease-in-out;
+}
+
+.PriceContainer button {
+  width: 70%;
+  background-color: #232323;
+  color: whitesmoke;
+  font-size: 15px;
+  text-transform: uppercase;
+  padding: 7px;
+  cursor: pointer;
+}
+.PriceContainer button:hover {
+  background-color: transparent;
+  transition: all ease-in-out 0.8s;
+  color: #232323;
+}
+.TypesDIV {
+  display: flex;
+  width: 80%;
+  margin: 10px auto;
+  justify-content: space-between;
+  align-items: center;
+}
+label {
+  font-weight: 300;
+  font-size: 15px;
+}
+.Color .CategoriesList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: auto auto;
+}
+.Color .ColorCircle {
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 20%;
+  height: 20%;
+  padding: 10px;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+.Size .CategoriesList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.Size .SizeContainer {
+  margin: 10px auto;
+  cursor: pointer;
+  padding: 5px;
+  border: 1px solid black;
+}
+.AllProductsMain {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductBannerImg {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 50px;
+}
+.ProductImgBanner {
+  width: 70%;
+  height: 100%;
+}
+.ProductImgBanner img {
+  width: 100%;
+  height: 100%;
+}
+.ProdcutImgDetails {
+  padding: 20px 0px;
+  width: 70%;
+}
+.PD-title {
+  font-size: 30px;
+  font-family: poppins;
+  font-weight: 600;
+}
+.PD-description {
+  font-size: 17px;
+  font-family: poppins;
+  font-weight: 300;
+}
+
+.AllProductsContainerMain {
+  margin: 50px 0px;
+}
+.ViewAsButtons {
+  display: flex;
+  width: 70%;
+  margin: 10px 30px;
+  align-items: center;
+}
+.ViewAsButtons span {
+  font-size: 20px;
+  font-family: poppins;
+  font-weight: 500;
+}
+.ViewButton {
+  margin: 0px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid gray;
+}
+
+.ViewButton:not(:first-of-type) {
+  transform: rotate(90deg);
+}
+
+.AllProdcutsmain {
+  display: grid;
+  gap: 20px;
+}
+
+.rowView {
+  grid-template-columns: 1fr;
+}
+
+.twoColumnView {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.threeColumnView {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.fourColumnView {
+  grid-template-columns: repeat(4, 1fr);
+  padding: 10px;
+}
+
+.ProductItem {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.ProductItem img {
+  max-width: 100%;
+  height: auto;
+}
+
+.fourColumnView .ProductItem h3 {
+  width: 90%;
+  margin: 10px auto;
+  font-family: poppins;
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: rgb(177, 174, 174);
+}
+.fourColumnView .ProductItem p {
+  width: 90%;
+  font-family: poppins;
+  font-weight: 400;
+  margin: 5px auto;
+  font-size: 10px;
+}
+
+.fourColumnView .ProductItem span {
+  font-weight: 600;
+  font-size: 20px;
+  font-family: poppins;
+}
+
+.threeColumnView .ProductItem h3 {
+  width: 90%;
+  margin: 10px auto;
+  font-family: poppins;
+  font-size: 15px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: rgb(177, 174, 174);
+}
+.threeColumnView .ProductItem p {
+  width: 90%;
+  font-family: poppins;
+  font-weight: 400;
+  margin: 5px auto;
+  font-size: 13px;
+}
+
+.threeColumnView .ProductItem span {
+  font-weight: 600;
+  font-size: 23px;
+  font-family: poppins;
+}
+
+.twoColumnView .ProductItem h3 {
+  width: 90%;
+  margin: 10px auto;
+  font-family: poppins;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: rgb(177, 174, 174);
+}
+.twoColumnView .ProductItem p {
+  width: 90%;
+  font-family: poppins;
+  font-weight: 400;
+  margin: 5px auto;
+  font-size: 15px;
+}
+
+.twoColumnView .ProductItem span {
+  font-weight: 600;
+  font-size: 25px;
+  font-family: poppins;
+}
+
+.rowView .ProductItem {
+  height: 70%;
+  display: flex;
+  margin: 10px;
+}
+
+.rowView .imgDiv {
+  width: 30%;
+  height: 100%;
+}
+.rowView .imgDiv img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.rowView .detailsDiv {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.detailsDiv h3 {
+  font-family: poppins;
+  margin: 20px;
+}
+.detailsDiv p {
+  font-family: poppins;
+  font-weight: 400;
+  font-size: 18px;
+  width: 70%;
+  margin: 10px auto;
+}
+.detailsDiv span {
+  font-family: poppins;
+  font-weight: 600;
+  font-size: 25px;
+  margin: 10px;
+}
