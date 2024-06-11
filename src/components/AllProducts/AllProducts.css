@@ -336,6 +336,9 @@ label {
   display: flex;
   margin: 10px;
 }
+.rowView .ProductItem a{
+  display: flex;
+}
 
 .rowView .imgDiv {
   width: 30%;
@@ -467,7 +470,7 @@ label {
     color: honeydew;
     justify-content: space-between;
     margin: 0px !important;
-    padding: 5px 0px !important;
+    padding: 10px 0px !important;
     border: none !important;
   }
   .ViewAsButtons.sticky div {
