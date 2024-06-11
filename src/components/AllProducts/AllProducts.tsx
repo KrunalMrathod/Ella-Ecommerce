@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import "./AllProducts.css";
 import { FaAngleDown, FaAngleUp, FaBars } from "react-icons/fa";
 import { HiMiniBars2, HiMiniBars4 } from "react-icons/hi2";
+import { Link } from "react-router-dom";
+import { CiFilter } from "react-icons/ci";
+import { IoIosArrowDown } from "react-icons/io";
 
 interface OptionalImg {
   textHover: string;
@@ -40,6 +43,8 @@ const AllProducts = () => {
   const [twoColumnView, setTwoColumnView] = useState<boolean>(false);
   const [threeColumnView, setThreeColumnView] = useState<boolean>(false);
   const [fourColumnView, setFourColumnView] = useState<boolean>(true);
+  const [showFilter, setShowFilter] = useState<boolean>(false);
+  const [mobileFilter, setMobileFilter] = useState<boolean>(false);
 
   useEffect(() => {
     const storedNewArrivalsString = localStorage.getItem("AllProducts");
@@ -49,6 +54,19 @@ const AllProducts = () => {
       storedNewArrivals = JSON.parse(storedNewArrivalsString);
       setAllProduct(storedNewArrivals);
     }
+
+    const handleResize = () => {
+      if (window.innerWidth < 1026) {
+        setMobileFilter(true);
+      } else {
+        setMobileFilter(false);
+      }
+    };
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const toggleState = (
@@ -64,8 +82,239 @@ const AllProducts = () => {
     setFourColumnView(view === "fourColumn");
   };
 
+  const toggleFilter = () => {
+    setShowFilter(!showFilter); // Toggle filter visibility
+  };
+  console.log(showFilter);
+
   return (
     <div className="AllProducts">
+      {showFilter && (
+        <div className="SideFilterMobiel">
+          <div className="Filters">
+            <div className="AllCategories">
+              <div
+                className="CategoriesDiv"
+                onClick={() => toggleState(setCategories)}
+              >
+                <span>CATEGORIES</span>{" "}
+                {categories ? <FaAngleUp /> : <FaAngleDown />}
+              </div>
+              <div className={`CategoriesList ${categories ? "show" : ""}`}>
+                <p>Cosmopolis</p>
+                <p>Suito</p>
+                <p>Milancelos</p>
+                <p>Blazero</p>
+                <p>Glamos</p>
+                <p>Metropolis</p>
+                <p>Valkyrio</p>
+                <p>Scarvero</p>
+                <p>Congue</p>
+              </div>
+            </div>
+            <div className="AllPrice">
+              <div
+                className="CategoriesDiv"
+                onClick={() => toggleState(setPrice)}
+              >
+                <span>PRICE</span> {price ? <FaAngleUp /> : <FaAngleDown />}
+              </div>
+              <div className={`CategoriesList ${price ? "show" : ""}`}>
+                <div className="PriceContainer">
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    className="styled-slider"
+                  />
+                  <div className="PriceBoxes">
+                    <div className="PriceBox">
+                      {" "}
+                      <span> $ </span> <span> 0 </span>{" "}
+                    </div>
+                    <span>to</span>
+                    <div className="PriceBox">
+                      {" "}
+                      <span> $ </span> <span> 500 </span>{" "}
+                    </div>
+                  </div>
+                  <button>apply</button>
+                </div>
+              </div>
+            </div>
+            <div className="AllType">
+              <div
+                className="CategoriesDiv"
+                onClick={() => toggleState(setTypes)}
+              >
+                <span>PRODUCT TYPES</span>{" "}
+                {types ? <FaAngleUp /> : <FaAngleDown />}
+              </div>
+              <div className={`CategoriesList ${types ? "show" : ""}`}>
+                <div className="TypesDIV">
+                  <input
+                    type="checkbox"
+                    id="check"
+                    className="styled-checkbox"
+                  />
+                  <label htmlFor="check" className="styled-label">
+                    {" "}
+                    Cosmopolis(8)
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div className="AllBrands">
+              <div
+                className="CategoriesDiv"
+                onClick={() => toggleState(setBrand)}
+              >
+                <span>BRAND</span> {brand ? <FaAngleUp /> : <FaAngleDown />}
+              </div>
+              <div className={`CategoriesList ${brand ? "show" : ""}`}>
+                <div className="TypesDIV">
+                  <input
+                    type="checkbox"
+                    id="check"
+                    className="styled-checkbox"
+                  />
+                  <label htmlFor="check" className="styled-label">
+                    {" "}
+                    anna(2){" "}
+                  </label>
+                </div>
+                <div className="TypesDIV">
+                  <input
+                    type="checkbox"
+                    id="check"
+                    className="styled-checkbox"
+                  />
+                  <label htmlFor="check" className="styled-label">
+                    {" "}
+                    donatello(2){" "}
+                  </label>
+                </div>
+                <div className="TypesDIV">
+                  <input
+                    type="checkbox"
+                    id="check"
+                    className="styled-checkbox"
+                  />
+                  <label htmlFor="check" className="styled-label">
+                    {" "}
+                    french connection(1){" "}
+                  </label>
+                </div>
+                <div className="TypesDIV">
+                  <input
+                    type="checkbox"
+                    id="check"
+                    className="styled-checkbox"
+                  />
+                  <label htmlFor="check" className="styled-label">
+                    {" "}
+                    sodling(1){" "}
+                  </label>
+                </div>
+                <div className="TypesDIV">
+                  <input
+                    type="checkbox"
+                    id="check"
+                    className="styled-checkbox"
+                  />
+                  <label htmlFor="check" className="styled-label">
+                    {" "}
+                    tomorrow(2){" "}
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div className="Avaiability">
+              <div
+                className="CategoriesDiv"
+                onClick={() => toggleState(setAvailability)}
+              >
+                <span>AVAILABILITY</span>{" "}
+                {availability ? <FaAngleUp /> : <FaAngleDown />}
+              </div>
+              <div className={`CategoriesList ${availability ? "show" : ""}`}>
+                <div className="TypesDIV">
+                  <input
+                    type="checkbox"
+                    id="check"
+                    className="styled-checkbox"
+                  />
+                  <label htmlFor="check" className="styled-label">
+                    {" "}
+                    IN sTOCK(8){" "}
+                  </label>
+                </div>
+                <div className="TypesDIV">
+                  <input
+                    type="checkbox"
+                    id="check"
+                    className="styled-checkbox"
+                  />
+                  <label htmlFor="check" className="styled-label">
+                    {" "}
+                    OUT OF STOCK(7){" "}
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div className="Color">
+              <div
+                className="CategoriesDiv"
+                onClick={() => toggleState(setColor)}
+              >
+                <span>COLOR</span> {color ? <FaAngleUp /> : <FaAngleDown />}
+              </div>
+              <div className={`CategoriesList ${color ? "show" : ""}`}>
+                <div className="ColorCircle"></div>
+                <div className="ColorCircle"></div>
+                <div className="ColorCircle"></div>
+                <div className="ColorCircle"></div>
+                <div className="ColorCircle"></div>
+                <div className="ColorCircle"></div>
+                <div className="ColorCircle"></div>
+                <div className="ColorCircle"></div>
+                <div className="ColorCircle"></div>
+              </div>
+            </div>
+            <div className="Size">
+              <div
+                className="CategoriesDiv"
+                onClick={() => toggleState(setSize)}
+              >
+                <span>SIZE</span> {size ? <FaAngleUp /> : <FaAngleDown />}
+              </div>
+              <div className={`CategoriesList ${size ? "show" : ""}`}>
+                <div className="SizeContainer">
+                  <span>S</span>
+                </div>
+                <div className="SizeContainer">
+                  <span>M</span>
+                </div>
+                <div className="SizeContainer">
+                  <span>L</span>
+                </div>
+                <div className="SizeContainer">
+                  <span>XL</span>
+                </div>
+                <div className="SizeContainer">
+                  <span>2X</span>
+                </div>
+                <div className="SizeContainer">
+                  <span>3X</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="cancelButton" onClick={toggleFilter}>
+            X
+          </div>
+        </div>
+      )}
       <div className="Filters">
         <div className="AllCategories">
           <div
@@ -212,9 +461,6 @@ const AllProducts = () => {
           </div>
           <div className={`CategoriesList ${size ? "show" : ""}`}>
             <div className="SizeContainer">
-              <span>XS</span>
-            </div>
-            <div className="SizeContainer">
               <span>S</span>
             </div>
             <div className="SizeContainer">
@@ -235,6 +481,7 @@ const AllProducts = () => {
           </div>
         </div>
       </div>
+
       <div className="AllProductsMain">
         <div className="ProductBannerImg">
           <div className="ProductImgBanner">
@@ -254,45 +501,84 @@ const AllProducts = () => {
         </div>
         <div className="AllProductsContainerMain">
           <div className="ViewAsButtons">
-            <span>VIEW AS</span>
-            <div className="ViewButton" onClick={() => handleViewChange("row")}>
-              <FaBars />
-            </div>
-            <div className="ViewButton" onClick={() => handleViewChange("twoColumn")}>
-              <HiMiniBars2 />
-            </div>
-            <div className="ViewButton" onClick={() => handleViewChange("threeColumn")}>
-              <FaBars />
-            </div>
-            <div className="ViewButton" onClick={() => handleViewChange("fourColumn")}>
-              <HiMiniBars4 />
-            </div>
+            {mobileFilter ? (
+              <>
+                <div className="filterIconsMobile" onClick={toggleFilter}>
+                  <CiFilter />
+                  <span>Filter</span>
+                </div>
+
+                <div className="sortFilterMobile">
+                  <span> Sort </span>
+                  <IoIosArrowDown />
+                </div>
+              </>
+            ) : (
+              <>
+                <span>VIEW AS</span>
+                <div
+                  className="ViewButton"
+                  onClick={() => handleViewChange("row")}
+                >
+                  <FaBars />
+                </div>
+                <div
+                  className="ViewButton"
+                  onClick={() => handleViewChange("twoColumn")}
+                >
+                  <HiMiniBars2 />
+                </div>
+                <div
+                  className="ViewButton"
+                  onClick={() => handleViewChange("threeColumn")}
+                >
+                  <FaBars />
+                </div>
+                <div
+                  className="ViewButton"
+                  onClick={() => handleViewChange("fourColumn")}
+                >
+                  <HiMiniBars4 />
+                </div>
+              </>
+            )}
           </div>
-          <div className={`AllProdcutsmain ${rowView ? "rowView" : ""} ${twoColumnView ? "twoColumnView" : ""} ${threeColumnView ? "threeColumnView" : ""} ${fourColumnView ? "fourColumnView" : ""}`}>
-  {allProduct.map((product) => (
-    <div key={product.id} className="ProductItem">
-      {rowView ? (
-        <>
-          <div className="imgDiv">
-            <img src={product.mainImg} alt={product.title} />
+          <div
+            className={`AllProdcutsmain ${rowView ? "rowView" : ""} ${
+              twoColumnView ? "twoColumnView" : ""
+            } ${threeColumnView ? "threeColumnView" : ""} ${
+              fourColumnView ? "fourColumnView" : ""
+            }`}
+          >
+            {allProduct.map((product) => (
+              <div key={product.id} className="ProductItem">
+                <Link
+                  to={`/allProducts/singleProduct/${product.id}`}
+                  state={{ product }}
+                >
+                  {rowView ? (
+                    <>
+                      <div className="imgDiv">
+                        <img src={product.mainImg} alt={product.title} />
+                      </div>
+                      <div className="detailsDiv">
+                        <h3>{product.title}</h3>
+                        <p>{product.description}</p>
+                        <span>${product.price}</span>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <img src={product.mainImg} alt={product.title} />
+                      <h3>{product.title}</h3>
+                      <p>{product.description}</p>
+                      <span>${product.price}</span>
+                    </>
+                  )}
+                </Link>
+              </div>
+            ))}
           </div>
-          <div className="detailsDiv">
-            <h3>{product.title}</h3>
-            <p>{product.description}</p>
-            <span>${product.price}</span>
-          </div>
-        </>
-      ) : (
-        <>
-          <img src={product.mainImg} alt={product.title} />
-          <h3>{product.title}</h3>
-          <p>{product.description}</p>
-          <span>${product.price}</span>
-        </>
-      )}
-    </div>
-  ))}
-</div>
         </div>
       </div>
     </div>

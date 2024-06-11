@@ -257,6 +257,10 @@ label {
   max-width: 100%;
   height: auto;
 }
+.ProductItem a {
+  list-style: none;
+  color: unset;
+}
 
 .fourColumnView .ProductItem h3 {
   width: 90%;
@@ -346,6 +350,7 @@ label {
   display: flex;
   flex-direction: column;
   width: 80%;
+  justify-content: center;
 }
 
 .detailsDiv h3 {
@@ -364,4 +369,91 @@ label {
   font-weight: 600;
   font-size: 25px;
   margin: 10px;
+}
+
+@media only screen and (max-width: 480px) {
+  .AllProducts {
+    display: flex;
+    position: relative;
+  }
+  .SideFilterMobiel {
+    border: 1px solid lightgray;
+    position: absolute;
+    width: 80%;
+    display: flex;
+  }
+  .cancelButton{
+    border: 1px solid lightgray;
+    background-color: #232323;
+    color: whitesmoke;
+    height: 30px;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 100%;
+    
+  }
+  .SideFilterMobiel .Filters{
+    display: block;
+    background-color: whitesmoke;
+    width: 100%;
+    height: 100%;
+  }
+  .AllProductsMain {
+    width: 100%;
+  }
+  .Filters {
+    display: none;
+  }
+  .ProductBannerImg {
+    width: 100%;
+    padding: 0px !important;
+  }
+  .ProductImgBanner {
+    width: 100%;
+  }
+  .ProductImgBanner img {
+    width: 100%;
+    height: 100%;
+  }
+  .ProdcutImgDetails {
+    width: 100%;
+    padding: 0px !important;
+  }
+  .PD-title {
+    font-size: 23px;
+    text-align: center;
+  }
+  .PD-description {
+    font-size: 15px;
+    text-align: center;
+  }
+  .AllProductsContainerMain {
+    border: 1px solid lightgray;
+  }
+  .ViewAsButtons {
+    border: 1px solid lightgray;
+    width: 90%;
+    margin: 10px auto;
+    padding: 0px 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .ViewAsButtons div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ViewAsButtons span {
+    font-size: 15px;
+  }
+  .ViewAsButtons svg {
+    font-size: 18px;
+  }
+  .AllProdcutsmain {
+    display: flex;
+    flex-direction: column;
+  }
 }
