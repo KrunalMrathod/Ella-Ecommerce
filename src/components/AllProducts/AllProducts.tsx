@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./AllProducts.css";
 import { FaAngleDown, FaAngleUp, FaBars } from "react-icons/fa";
 import { HiMiniBars2, HiMiniBars4 } from "react-icons/hi2";
@@ -45,6 +45,9 @@ const AllProducts = () => {
   const [fourColumnView, setFourColumnView] = useState<boolean>(true);
   const [showFilter, setShowFilter] = useState<boolean>(false);
   const [mobileFilter, setMobileFilter] = useState<boolean>(false);
+  const [isSticky, setIsSticky] = useState(false);
+  const [initialPosition, setInitialPosition] = useState<number>(0);
+  const prevScrollY = useRef<number>(0);
 
   useEffect(() => {
     const storedNewArrivalsString = localStorage.getItem("AllProducts");
@@ -64,10 +67,35 @@ const AllProducts = () => {
     };
     handleResize();
 
-    window.addEventListener("resize", handleResize);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
 
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+      if (currentScrollY > initialPosition && !isSticky) {
+        // Scrolling down from initial position
+        setIsSticky(true);
+      } else if (currentScrollY <= initialPosition && isSticky) {
+        // Scrolling up to initial position
+        setIsSticky(false);
+      }
+
+      prevScrollY.current = currentScrollY;
+    };
+
+
+   const containerElement = document.querySelector(".ViewAsButtons");
+    if (containerElement) {
+      setInitialPosition(containerElement.getBoundingClientRect().top + window.scrollY);
+    }
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll);
+
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isSticky,initialPosition]);
 
   const toggleState = (
     setState: React.Dispatch<React.SetStateAction<boolean>>
@@ -500,7 +528,7 @@ const AllProducts = () => {
           </div>
         </div>
         <div className="AllProductsContainerMain">
-          <div className="ViewAsButtons">
+          <div className={`ViewAsButtons ${isSticky ? "sticky" : ""}`}>
             {mobileFilter ? (
               <>
                 <div className="filterIconsMobile" onClick={toggleFilter}>

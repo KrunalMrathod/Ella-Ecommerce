@@ -374,15 +374,20 @@ label {
 @media only screen and (max-width: 480px) {
   .AllProducts {
     display: flex;
-    position: relative;
   }
   .SideFilterMobiel {
     border: 1px solid lightgray;
-    position: absolute;
     width: 80%;
     display: flex;
+    position: fixed;
+    top: 0;
+    box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+    overflow-y: auto;
+    max-height: 100vh;
   }
-  .cancelButton{
+  .cancelButton {
     border: 1px solid lightgray;
     background-color: #232323;
     color: whitesmoke;
@@ -391,11 +396,11 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    left: 100%;
-    
+    position: fixed;
+    left: 70%;
+    top: 0;
   }
-  .SideFilterMobiel .Filters{
+  .SideFilterMobiel .Filters {
     display: block;
     background-color: whitesmoke;
     width: 100%;
@@ -452,6 +457,23 @@ label {
   .ViewAsButtons svg {
     font-size: 18px;
   }
+  .ViewAsButtons.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px 10px;
+    background-color: #232323;
+    color: honeydew;
+    justify-content: space-between;
+    margin: 0px !important;
+    padding: 5px 0px !important;
+    border: none !important;
+  }
+  .ViewAsButtons.sticky div {
+    margin: 0px 20px;
+  }
+
   .AllProdcutsmain {
     display: flex;
     flex-direction: column;
