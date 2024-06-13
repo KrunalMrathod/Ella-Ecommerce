@@ -71,18 +71,17 @@ const AllProducts = () => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > initialPosition && !isSticky) {
-        // Scrolling down from initial position
         setIsSticky(true);
       } else if (currentScrollY <= initialPosition && isSticky) {
-        // Scrolling up to initial position
         setIsSticky(false);
       }
 
       prevScrollY.current = currentScrollY;
     };
+    
 
 
-   const containerElement = document.querySelector(".ViewAsButtons");
+    const containerElement = document.querySelector(".ViewAsButtons");
     if (containerElement) {
       setInitialPosition(containerElement.getBoundingClientRect().top + window.scrollY);
     }
@@ -111,9 +110,8 @@ const AllProducts = () => {
   };
 
   const toggleFilter = () => {
-    setShowFilter(!showFilter); // Toggle filter visibility
+    setShowFilter(!showFilter); 
   };
-  console.log(showFilter);
 
   return (
     <div className="AllProducts">
