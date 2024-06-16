@@ -4,6 +4,8 @@ import NewArrivals from "../NewArrivals/NewArrivals.tsx"
 import TrendingNow from "../TrendingNow/TrendingNow.tsx";
 import FeaturedIn from "../FeaturedIn/FeaturedIn.tsx";
 
+
+
 const Body = () => {
   const [mobileBanner, setMobileBanner] = useState(false);
   const [scrollDirection, setScrollDirection] = useState("up");

@@ -7,7 +7,13 @@ import { IoIosSearch } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const TopNav = () => {
+
+interface TopNavProps {
+  onCartIconClick: () => void;
+}
+
+
+const TopNav: React.FC<TopNavProps> = ({ onCartIconClick }) => {
   const [mobileView, setMobileView] = useState<boolean>(false);
   useEffect(() => {
     const handleResize = () => {
@@ -43,28 +49,25 @@ const TopNav = () => {
       ) : (
         <>
           <div className="NavLeft">
-            
-              <div className="LogoDiv">
+            <div className="LogoDiv">
               <Link to={"/"}>
                 <img
                   src="https://new-ella-demo.myshopify.com/cdn/shop/files/ella-logo-black-compressor.png?v=1629858814&width=300"
                   alt="Ella"
                 />
-                  </Link>
-              </div>
-          
+              </Link>
+            </div>
           </div>
           <div className="NavRight">
             <div className="TopLinks">
-              <div className="CartDiv">
+              <div className="CartDiv" onClick={onCartIconClick}>
                 <div className="cartIcons">
                   <SlBag />
                 </div>
-                <Link to={"/cart"}>
+               
                   <div className="cartText">
                     <span>Shopping Cart</span>
                   </div>
-                </Link>
 
                 <div className="cartCount">
                   <span>0</span>

@@ -1,0 +1,129 @@
+.cart-sidebar span:first-child {
+  font-size: 600;
+  font-family: poppins;
+  font-size: 20px;
+  margin: 5px 10px;
+}
+.EmptyCart {
+  margin: 60px auto;
+}
+.EmptyCart p {
+  font-family: poppins;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 10px 10px;
+}
+.cart-sidebar .EmptyCart img {
+  width: 100%;
+  height: 50vh;
+}
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 25%;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+}
+.Cart {
+  height: 500px;
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
+.Cart::-webkit-scrollbar {
+  display: none;
+}
+
+.cart-item {
+  border: 1px solid lightgray;
+  display: flex;
+  margin: 10px 0px;
+  cursor: pointer;
+}
+
+.cart-item img {
+  width: 30%;
+}
+
+.cart-item-details {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 5px;
+}
+.cart-item-details h4 {
+  font-size: 15px;
+  margin: 5px;
+}
+.cart-item-details p {
+  font-size: 15px;
+  margin: 5px;
+  font-weight: 600;
+}
+.cart-item-details .QuantityBox {
+  display: flex;
+  align-items: center;
+}
+
+.CartIcons {
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+}
+.CartIcons svg {
+  font-size: 35px;
+  margin: 0px 15px;
+  cursor: pointer;
+  border: 1px solid rgb(233, 234, 236);
+  width: 30%;
+  padding: 5px;
+}
+.CartTotal {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 30px auto;
+  font-family: poppins;
+}
+.CartTotal div:first-child {
+  font-weight: 600;
+}
+.CartTotal div:last-child {
+  font-weight: 400;
+}
+.CheckOutButton {
+  font-family: poppins;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.agriment {
+  display: flex;
+  flex-direction: column;
+}
+.agriment span:first-child {
+  font-size: 10px;
+  font-weight: 400;
+}
+.agriment .chk {
+  display: flex;
+  margin: 0px 10px;
+  font-size: 10px;
+}
+.chk span {
+  margin: 0px 5px;
+}
+
+.CheckOutButton button {
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #222;
+  color: whitesmoke;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}

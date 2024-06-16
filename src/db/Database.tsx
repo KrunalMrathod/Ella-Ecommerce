@@ -18,7 +18,7 @@ export const NewArrivals = [
     productType: "Dincidunteros",
     price: 48.99,
     left: 10,
-    Sixe: ["XS", "S", "M", "L"],
+    Size: ["XS", "S", "M", "L"],
     optionalImgs: [
       {
         id: uuidv4(),
@@ -71,7 +71,7 @@ export const NewArrivals = [
     productType: "Dincidunteros",
     price: 48.99,
     left: 10,
-    Sixe: ["XS", "S", "M", "L"],
+    Size: ["XS", "S", "M", "L"],
     optionalImgs: [
       {
         id: uuidv4(),
@@ -112,7 +112,7 @@ export const NewArrivals = [
     productType: "Dincidunteros",
     price: 48.99,
     left: 10,
-    Sixe: ["XS", "S", "M", "L"],
+    Size: ["XS", "S", "M", "L"],
     optionalImgs: [
       {
         id: uuidv4(),
@@ -153,7 +153,7 @@ export const NewArrivals = [
     productType: "Dincidunteros",
     price: 48.99,
     left: 10,
-    Sixe: ["XS", "S", "M", "L"],
+    Size: ["XS", "S", "M", "L"],
     optionalImgs: [
       {
         id: uuidv4(),
@@ -179,7 +179,7 @@ export const NewArrivals = [
     productType: "Dincidunteros",
     price: 48.99,
     left: 10,
-    Sixe: ["XS", "S", "M", "L"],
+    Size: ["XS", "S", "M", "L"],
     optionalImgs: [
       {
         id: uuidv4(),
@@ -220,7 +220,7 @@ export const NewArrivals = [
     productType: "Dincidunteros",
     price: 48.99,
     left: 10,
-    Sixe: ["XS", "S", "M", "L"],
+    Size: ["XS", "S", "M", "L"],
     optionalImgs: [
       {
         id: uuidv4(),
@@ -256,7 +256,7 @@ export const NewArrivals = [
     productType: "Dincidunteros",
     price: 48.99,
     left: 10,
-    Sixe: ["XS", "S", "M", "L"],
+    Size: ["XS", "S", "M", "L"],
   },
   {
     id: uuidv4(),
@@ -275,7 +275,7 @@ export const NewArrivals = [
     productType: "Dincidunteros",
     price: 48.99,
     left: 10,
-    Sixe: ["XS", "S", "M", "L"],
+    Size: ["XS", "S", "M", "L"],
     optionalImgs: [
       {
         id: uuidv4(),
@@ -314,7 +314,7 @@ export const TrendingNow = [
     productType: "Dincidunteros",
     price: 48.99,
     left: 10,
-    Sixe: ["XS", "S", "M", "L"],
+    Size: ["XS", "S", "M", "L"],
     optionalImgs: [
       {
         id: uuidv4(),
@@ -367,7 +367,7 @@ export const TrendingNow = [
     productType: "Dincidunteros",
     price: 48.99,
     left: 10,
-    Sixe: ["XS", "S", "M", "L"],
+    Size: ["XS", "S", "M", "L"],
     optionalImgs: [
       {
         id: uuidv4(),
@@ -408,7 +408,7 @@ export const TrendingNow = [
     productType: "Dincidunteros",
     price: 48.99,
     left: 10,
-    Sixe: ["XS", "S", "M", "L"],
+    Size: ["XS", "S", "M", "L"],
     optionalImgs: [
       {
         id: uuidv4(),
@@ -449,7 +449,7 @@ export const TrendingNow = [
     productType: "Dincidunteros",
     price: 48.99,
     left: 10,
-    Sixe: ["XS", "S", "M", "L"],
+    Size: ["XS", "S", "M", "L"],
     optionalImgs: [
       {
         id: uuidv4(),
@@ -475,7 +475,7 @@ export const TrendingNow = [
     productType: "Dincidunteros",
     price: 48.99,
     left: 10,
-    Sixe: ["XS", "S", "M", "L"],
+    Size: ["XS", "S", "M", "L"],
     optionalImgs: [
       {
         id: uuidv4(),
@@ -516,7 +516,7 @@ export const TrendingNow = [
     productType: "Dincidunteros",
     price: 48.99,
     left: 10,
-    Sixe: ["XS", "S", "M", "L"],
+    Size: ["XS", "S", "M", "L"],
     optionalImgs: [
       {
         id: uuidv4(),

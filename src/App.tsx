@@ -1,16 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Outlet } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Outlet,
+} from "react-router-dom";
 import "./App.css";
 import TopNav from "./components/TopNav/TopNav";
 import BottomNav from "./components/BottomNav/BottomNav";
 import Footer from "./components/Footer/Footer";
 import Body from "./components/Body/Body";
-import Cart from "./components/Cart/Cart";
-import { NewArrivals, TrendingNow, FeaturedOnElla, AllDataOnElla } from "./db/Database";
+import CartPage from "./components/CartPage/CartPage";
+import {
+  NewArrivals,
+  TrendingNow,
+  FeaturedOnElla,
+  AllDataOnElla,
+} from "./db/Database";
 import AllProducts from "./components/AllProducts/AllProducts";
 import SingleProducts from "./components/SingleProducts/SingleProducts";
 
-const Layout: React.FC = () => {
+interface LayoutProps {
+  onCartIconClick: () => void;
+}
+
+const Layout: React.FC<LayoutProps> = ({ onCartIconClick }) => {
   const [prevScrollPos, setPrevScrollPos] = useState<number>(0);
   const [sticky, setSticky] = useState<boolean>(false);
 
@@ -42,7 +56,7 @@ const Layout: React.FC = () => {
 
   return (
     <div className="App">
-      <TopNav />
+      <TopNav onCartIconClick={onCartIconClick} />
       <div className={`BottomNavMain ${sticky ? "sticky" : ""}`}>
         <BottomNav />
       </div>
@@ -53,16 +67,97 @@ const Layout: React.FC = () => {
 };
 
 const App: React.FC = () => {
+  const [showCart, setShowCart] = useState<boolean>(false);
+  const cartRef = useRef<HTMLDivElement | null>(null);
+
+  const toggleCart = () => {
+    setShowCart(!showCart);
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
+      setShowCart(false);
+    }
+  };
+
+  useEffect(() => {
+    if (showCart) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showCart]);
+
+  interface CartItem {
+    productId: string;
+    title: string;
+    price: number;
+    mainImg: string;
+    size: string;
+    quantity: number;
+  }
+
+  const addToCart = (
+    productId: string,
+    title: string,
+    price: number,
+    mainImg: string,
+    size: string,
+    quantity: number
+  ) => {
+    const cartData: CartItem[] = JSON.parse(
+      localStorage.getItem("cartData") || "[]"
+    );
+  
+    const existingItemIndex = cartData.findIndex(
+      (item: CartItem) => item.productId === productId && item.size === size
+    );
+  
+    if (existingItemIndex !== -1) {
+      cartData[existingItemIndex].quantity += quantity;
+    } else {
+      const newCartItem: CartItem = {
+        productId,
+        title,
+        price,
+        mainImg,
+        size,
+        quantity,
+      };
+      cartData.push(newCartItem);
+    }
+  
+    localStorage.setItem("cartData", JSON.stringify(cartData));
+    toggleCart();
+  };
+
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Body />} />
-          <Route path="/allProducts" element={<AllProducts />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="allProducts/singleProduct/:productId" element={<SingleProducts />} />
-        </Route>
-      </Routes>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Layout onCartIconClick={toggleCart} />}>
+            <Route index element={<Body />} />
+            <Route path="/allProducts" element={<AllProducts />} />
+            <Route
+              path="allProducts/singleProduct/:productId"
+              element={<SingleProducts onAddToCart={addToCart} />}
+            />
+          </Route>
+        </Routes>
+        {showCart && (
+          <div
+            ref={cartRef}
+            className={`cart-sidebar ${showCart ? "open" : ""}`}
+          >
+            <CartPage />
+            <button onClick={toggleCart}>Close</button>
+          </div>
+        )}
+      </div>
     </Router>
   );
 };

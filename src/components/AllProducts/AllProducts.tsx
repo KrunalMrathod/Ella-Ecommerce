@@ -30,6 +30,7 @@ interface allProdcut {
   optionalImgs: OptionalImg[];
 }
 
+
 const AllProducts = () => {
   const [categories, setCategories] = useState<boolean>(true);
   const [price, setPrice] = useState<boolean>(true);
