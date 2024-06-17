@@ -69,6 +69,7 @@ const Layout: React.FC<LayoutProps> = ({ onCartIconClick }) => {
 const App: React.FC = () => {
   const [showCart, setShowCart] = useState<boolean>(false);
   const cartRef = useRef<HTMLDivElement | null>(null);
+  const [cartData, setCartData] = useState<CartItem[]>([]);
 
   const toggleCart = () => {
     setShowCart(!showCart);
@@ -101,40 +102,26 @@ const App: React.FC = () => {
     quantity: number;
   }
 
-  const addToCart = (
-    productId: string,
-    title: string,
-    price: number,
-    mainImg: string,
-    size: string,
-    quantity: number
-  ) => {
-    const cartData: CartItem[] = JSON.parse(
-      localStorage.getItem("cartData") || "[]"
-    );
-  
-    const existingItemIndex = cartData.findIndex(
-      (item: CartItem) => item.productId === productId && item.size === size
-    );
-  
-    if (existingItemIndex !== -1) {
-      cartData[existingItemIndex].quantity += quantity;
-    } else {
-      const newCartItem: CartItem = {
-        productId,
-        title,
-        price,
-        mainImg,
-        size,
-        quantity,
-      };
-      cartData.push(newCartItem);
-    }
-  
-    localStorage.setItem("cartData", JSON.stringify(cartData));
-    toggleCart();
-  };
+  const handleAddToCart = (productId: string, title: string, price: number, mainImg: string, size: string, quantity: number) => {
+    const newCartData = [...cartData];
+    const existingItemIndex = newCartData.findIndex(item => item.productId === productId && item.size === size);
 
+    if (existingItemIndex !== -1) {
+      const existingItem = newCartData[existingItemIndex];
+      if (existingItem.quantity + quantity <= 5) {
+        newCartData[existingItemIndex].quantity += quantity;
+      } else {
+        alert("Warning: Total quantity for this size cannot exceed 5.");
+        return;
+      }
+    } else {
+      newCartData.push({ productId, title, price, mainImg, size, quantity });
+    }
+
+    setCartData(newCartData);
+    localStorage.setItem("cartData", JSON.stringify(newCartData));
+    toggleCart()
+  };
   return (
     <Router>
       <div className="App">
@@ -144,7 +131,7 @@ const App: React.FC = () => {
             <Route path="/allProducts" element={<AllProducts />} />
             <Route
               path="allProducts/singleProduct/:productId"
-              element={<SingleProducts onAddToCart={addToCart} />}
+              element={<SingleProducts onAddToCart={handleAddToCart} cartData={cartData} />}
             />
           </Route>
         </Routes>

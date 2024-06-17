@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./CartPage.css";
-import { IoClipboardOutline } from "react-icons/io5";
-import { IoGiftOutline } from "react-icons/io5";
+import { IoClipboardOutline, IoGiftOutline, IoPricetagsOutline } from "react-icons/io5";
 import { LiaShippingFastSolid } from "react-icons/lia";
-import { IoPricetagsOutline } from "react-icons/io5";
 
 interface CartItem {
   productId: string;
@@ -47,6 +45,10 @@ const CartPage: React.FC = () => {
     return (item.price * item.quantity).toFixed(2);
   };
 
+  const calculateCartTotal = () => {
+    return cartData.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+  };
+
   return (
     <div className="cart-sidebar">
       <span> Your Cart</span>
@@ -55,7 +57,7 @@ const CartPage: React.FC = () => {
           <p>Your cart is empty.</p>
           <img
             src="https://blogzine.webestica.com/assets/images/icon/empty-cart.svg"
-            alt=""
+            alt="Empty cart"
           />
         </div>
       ) : (
@@ -86,9 +88,10 @@ const CartPage: React.FC = () => {
               </div>
             </div>
           ))}
-          {warningMessage && <div className="warning">{warningMessage}</div>}
+          
         </div>
       )}
+      {warningMessage && <div className="warning">{warningMessage}</div>}
       <div className="CartIcons">
         <IoClipboardOutline />
         <IoPricetagsOutline />
@@ -97,18 +100,16 @@ const CartPage: React.FC = () => {
       </div>
       <div className="CartTotal">
         <div>TOTAL :</div>
-        <div> 500 </div>
+        <div>${calculateCartTotal()}</div>
       </div>
       <div className="CheckOutButton">
         <div className="agriment">
           <span>Tax included and shipping calculated at checkout</span>
           <div className="chk">
-            {" "}
-            <input type="checkbox" />{" "}
-            <span>I agree withTerms & Conditions</span>
+            <input type="checkbox" /> <span>I agree with Terms & Conditions</span>
           </div>
         </div>
-        <button> CHECK OUT </button>
+        <button>CHECK OUT</button>
       </div>
     </div>
   );

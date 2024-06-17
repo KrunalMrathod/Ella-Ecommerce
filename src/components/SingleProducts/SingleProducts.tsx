@@ -29,9 +29,19 @@ interface Product {
 
 interface SingleProductsProps {
   onAddToCart: (productId: string, title: string, price: number, mainImg: string, size: string, quantity: number) => void;
+  cartData: CartItem[];
 }
 
-const SingleProduct: React.FC<SingleProductsProps> = ({ onAddToCart }) => {
+interface CartItem {
+  productId: string;
+  title: string;
+  price: number;
+  mainImg: string;
+  size: string;
+  quantity: number;
+}
+
+const SingleProduct: React.FC<SingleProductsProps> = ({ onAddToCart, cartData }) => {
   const location = useLocation();
   const { product } = (location.state as { product: Product }) || {};
   const [selectedSize, setSelectedSize] = useState<string>("S");
@@ -82,7 +92,16 @@ const SingleProduct: React.FC<SingleProductsProps> = ({ onAddToCart }) => {
   };
 
   const handleAddToCart = () => {
-    onAddToCart(product.id, product.title, product.price, product.mainImg, selectedSize, quantity);
+    const existingItem = cartData.find(
+      (item) => item.productId === product.id && item.size === selectedSize
+    );
+
+    if (existingItem && existingItem.quantity + quantity > 5) {
+      setWarningMessage("Warning: Total quantity for this size cannot exceed 5.");
+    } else {
+      onAddToCart(product.id, product.title, product.price, product.mainImg, selectedSize, quantity);
+      setWarningMessage("");
+    }
   };
 
   return (
